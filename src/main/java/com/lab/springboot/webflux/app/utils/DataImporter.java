@@ -32,7 +32,7 @@ public class DataImporter {
 
 
   private void dropAndImportProducts() {
-    mongoTemplate.dropCollection("productos").subscribe();
+    mongoTemplate.dropCollection("products").subscribe();
 
     Flux.fromIterable(this.getProductList())
         .flatMap(productService::save)
@@ -53,6 +53,9 @@ public class DataImporter {
     productList.add(new Product("Printer HP", "Hewlett Packard Multiprinter", 279.89));
     productList.add(new Product("Bianchi Bicycle", "Bicycle Bianchi 17 inch wheels", 1359.89));
     productList.add(new Product("Mica Desk", "Desk for office", 435.00));
+    productList.add(new Product("Laptop Dell 15", "Laptop Dell Programming 15", 1435.00));
+    productList.add(new Product("Laptop Monitor 27", "Monitor for working Dell", 539.99));
+    productList.add(new Product("Keyboard Logitec G-915", "Mechanical Keyboard Logitec", 329.90));
     return productList;
   }
 
