@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 public class DataImporter {
 
-  private final Logger log = LoggerFactory.getLogger(DataImporter.class);
+  private static final Logger log = LoggerFactory.getLogger(DataImporter.class);
 
   private final ProductService productService;
   private final ReactiveMongoTemplate mongoTemplate;
