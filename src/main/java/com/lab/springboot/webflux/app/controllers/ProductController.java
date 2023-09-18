@@ -76,11 +76,24 @@ public class ProductController {
         .map(product -> {
           product.setName(product.getName().toUpperCase());
           return product;
-        }).repeat(5000);
+        }).repeat(2500);
 
     model.addAttribute("productFlux", productFlux);
     model.addAttribute("title", "List of Producs using Flux");
     return "product/list";
+  }
+
+  @GetMapping("/list-chunked")
+  public String getProductListChunked(Model model) {
+    Flux<Product> productFlux = productService.findAll()
+        .map(product -> {
+          product.setName(product.getName().toUpperCase());
+          return product;
+        }).repeat(2500);
+
+    model.addAttribute("productFlux", productFlux);
+    model.addAttribute("title", "List of Producs using Flux");
+    return "product/list-chunked";
   }
 
 }
