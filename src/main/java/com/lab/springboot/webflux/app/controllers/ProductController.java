@@ -69,4 +69,18 @@ public class ProductController {
     return "product/list";
   }
 
+
+  @GetMapping("/list-full")
+  public String getProductListFull(Model model) {
+    Flux<Product> productFlux = productService.findAll()
+        .map(product -> {
+          product.setName(product.getName().toUpperCase());
+          return product;
+        }).repeat(5000);
+
+    model.addAttribute("productFlux", productFlux);
+    model.addAttribute("title", "List of Producs using Flux");
+    return "product/list";
+  }
+
 }
